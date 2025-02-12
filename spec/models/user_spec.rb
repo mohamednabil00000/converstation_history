@@ -24,6 +24,10 @@ RSpec.describe User, type: :model do
     }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:projects).dependent(:destroy_async).with_foreign_key(:owner_id) }
+  end
+
   describe 'find_authenticated' do
     let(:user) { create(:user, email: 'test@test.com', password: '12345678', username: 'test') }
 

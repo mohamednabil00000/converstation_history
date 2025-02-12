@@ -11,6 +11,7 @@ class User < ApplicationRecord
                                  too_long: I18n.t("errors.messages.password_too_long") }, if: :password_required?
   validates_presence_of :password_confirmation, if: :password_digest_changed?
 
+  has_many :projects, dependent: :destroy_async, foreign_key: :owner_id
 
   def self.find_authenticated(args = {})
     user = find_by(email: args[:email])
