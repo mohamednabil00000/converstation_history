@@ -1,0 +1,14 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  a.navbar-brand.px-3[href="#"]
+    | Welcome 
+    = @current_user[:name]
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  #navbarNavAltMarkup.collapse.navbar-collapse
+    .navbar-nav
+      a.nav-item.nav-link[href="/transactions"]
+        | Transactions
+      - if @user_type == 'admin'
+        li.nav-item
+          a.nav-link[href="/merchants"]
+            | Merchants
