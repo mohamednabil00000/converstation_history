@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   root "sessions#new"
 
   resources :sessions, only: %i[create]
+  resources :projects
   resources :users
 end

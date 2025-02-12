@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     result = Auth::LoginService.call(email: login_params[:email], password: login_params[:password])
     if result.success?
       session[:auth_token] = result.token
-      redirect_to "/users"
+      redirect_to "/projects"
     else
       flash[:notice] = I18n.t("errors.messages.wrong_email_or_password")
       redirect_to "/"
