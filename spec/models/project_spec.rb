@@ -11,5 +11,6 @@ RSpec.describe Project, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:owner).class_name('User') }
+    it { is_expected.to have_many(:comments).dependent(:destroy_async) }
   end
 end

@@ -26,6 +26,7 @@ RSpec.describe User, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:projects).dependent(:destroy_async).with_foreign_key(:owner_id) }
+    it { is_expected.to have_many(:comments).dependent(:destroy_async).with_foreign_key(:author_id) }
   end
 
   describe 'find_authenticated' do

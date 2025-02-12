@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates_presence_of :password_confirmation, if: :password_digest_changed?
 
   has_many :projects, dependent: :destroy_async, foreign_key: :owner_id
+  has_many :comments, dependent: :destroy_async, foreign_key: :author_id
 
   def self.find_authenticated(args = {})
     user = find_by(email: args[:email])
