@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class Project::CreateService
+class Projects::CreateService
   Result = ImmutableStruct.new(:project, :success?, :errors)
 
   def self.call(params:, user:)
-    new(email, password).call
+    new(params, user).call
   end
 
   def call
-    project = user.build_project(params)
+    project = user.projects.new(params)
     unless project.save
       return Result.new(errors: project.errors.full_messages.join(", "), success: false)
     end
