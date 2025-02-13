@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   def edit; end
 
   def index
-    @projects = @current_user.projects.all.paginate(page: page_no, per_page: per_page)
+    @projects = Project.includes(:owner).paginate(page: page_no, per_page: per_page)
   end
 
   def create
@@ -28,7 +28,6 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
-      puts "nesma", project_params
       if @project.update(project_params)
         format.html { redirect_to "/projects", notice: "Project was successfully updated." }
       else

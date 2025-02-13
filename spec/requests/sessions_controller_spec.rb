@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: %i[api controller] do
         post_request(params: { email: 'test@test.com', password: '12345678' }, path: :create)
         expect(session).to have_key(:auth_token)
         expect(session[:auth_token]).not_to be_nil
-        expect(response).to redirect_to('/')
+        expect(response).to redirect_to('/projects')
       end
     end
 

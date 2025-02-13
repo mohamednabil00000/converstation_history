@@ -8,3 +8,5 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 #   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: true
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

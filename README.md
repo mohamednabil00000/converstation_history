@@ -21,6 +21,8 @@ The project conversation history should list comments and changes in status.
 
 ## Screenshots
 ![Alt text](/screenshots/login.png?raw=true "Login screen")
+![Alt text](/screenshots/projects.png?raw=true "Projects list screen")
+![Alt text](/screenshots/edit_project.png?raw=true "Edit status of project screen")
 
 
 ## Requirements

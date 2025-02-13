@@ -1,8 +1,6 @@
 =< link_to "<- Back to projects", projects_path, class: "hover:underline hover:text-gray-600"
 
 h1 class="text-xl font-bold mt-6" =< @project.name
+p class="mt-8" =< @project.owner.name
 p class="mt-8" =< @project.description
 p class="mt-8" =< @project.status
-
-
-  = will_paginate @projects

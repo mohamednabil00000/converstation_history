@@ -2,6 +2,8 @@ tr
   td
     = link_to project.name, project, data: { turbo_frame: "_top" }, class: "text-xl font-bold text-blue-500 hover:text-blue-600"
   td
+    = project.owner.username
+  td
     = project.description
   td
     = project.status
