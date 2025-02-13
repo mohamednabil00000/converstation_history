@@ -21,7 +21,7 @@ RSpec.describe Comment, type: :model do
       let!(:comment3) { create(:comment, project:, author: user) }
 
       it 'returns the comments ordered by created_at' do
-        expect(project.comments.order_by_latest).to eq([comment3, comment2, comment1])
+        expect(project.comments.order_by_latest).to eq([ comment3, comment2, comment1 ])
       end
     end
   end
