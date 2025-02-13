@@ -18,6 +18,7 @@ The project conversation history should list comments and changes in status.
 * Slim view engine
 * GitHub Actions for
   * tests
+  * lint
 
 ## Screenshots
 ![Alt text](/screenshots/login.png?raw=true "Login screen")
