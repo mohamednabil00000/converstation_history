@@ -1,0 +1,14 @@
+= form_with(model: @comment, url: [@project, @comment]) do |form|
+  - if @comment&.errors&.any?
+    div style="color: red"
+      h2 = "Can't save this comment due to #{pluralize(@comment.errors.count, "error")}"
+      ul
+        - @comment&.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :content, style: "display: block"
+    = form.text_field :content
+
+  = button_tag "Save", class: "ml-2 border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
+  = link_to "Cancel", projects_path, class: "border border-gray-500 bg-gray-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-gray-600 focus:outline-none focus:shadow-outline"

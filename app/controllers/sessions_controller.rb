@@ -3,8 +3,10 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize, only: %i[new create]
 
+  # GET /sessions/new
   def new; end
 
+  # POST /sessions
   def create
     result = Auth::LoginService.call(email: login_params[:email], password: login_params[:password])
     if result.success?

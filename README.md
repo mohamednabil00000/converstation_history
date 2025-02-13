@@ -23,6 +23,8 @@ The project conversation history should list comments and changes in status.
 ![Alt text](/screenshots/login.png?raw=true "Login screen")
 ![Alt text](/screenshots/projects.png?raw=true "Projects list screen")
 ![Alt text](/screenshots/edit_project.png?raw=true "Edit status of project screen")
+![Alt text](/screenshots/show_project.png?raw=true "Show project screen")
+![Alt text](/screenshots/add_comment.png?raw=true "Add new comment screen")
 
 
 ## Requirements
@@ -65,7 +67,8 @@ $ docker-compose run --rm app bin/rails c
 ```
 Already will run within the docker and the credentials are:
 
-email: admin@gmail.com   password: 12345678   name: admin
+email: manjaree@gmail.com   password: 12345678
+email: say@gmail.com   password: 12345678
 ```
 ## Author
 

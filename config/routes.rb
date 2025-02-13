@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :sessions, only: %i[create]
   resources :projects do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[new create destroy index]
   end
-  resources :users
 end

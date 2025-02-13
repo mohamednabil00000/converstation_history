@@ -1,12 +1,14 @@
-=< link_to "<- Back to projects", projects_path, class: "hover:underline hover:text-gray-600"
- 
+div class="flex justify-between"
+  =< link_to "<- Back to projects", projects_path, class: "hover:underline hover:text-gray-600"
+  = link_to "New comment", "#{@project.id}/comments/new", data: { turbo_frame: dom_id(Comment.new) }, class: "mt-2 border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
+
 div class="w-full flex" style="flex-direction: column"
   div class="flex mt-8" style="flex-direction: row"
     div class="font-bold" style="margin-right: 100px" Name
-    h1 class="text-xl font-bold" =< @project.name
+    h1 =< @project.name
 
   div class="flex flex-row mt-6" style="flex-direction: row"
-    div class="font-bold" style="margin-right: 50px" Owner
+    div class="font-bold" style="margin-right: 90px" Owner
     p =< @project.owner.username
  
   div class="flex flex-row mt-6" style="flex-direction: row"
@@ -18,6 +20,7 @@ div class="w-full flex" style="flex-direction: column"
     p =< @project.status
 
 - if @project.comments.size > 0
+  hr class="h-px my-8 bg-gray-200 border-2 dark:bg-gray-500 mt-4"
   div class="mt-8 text-xl font-bold" Comments
  
   div class="w-full flex" style="flex-direction: column"
@@ -30,7 +33,7 @@ div class="w-full flex" style="flex-direction: column"
           div class="font-bold" style="margin-right: 40px" Content
           p =< comment.content
         div class="flex mb-4" style="flex-direction: row"
-          div class="font-bold" style="margin-right: 40px" Created_at
+          div class="font-bold" style="margin-right: 20px" Created at
           p =< comment.created_at
         hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"
 
