@@ -35,3 +35,18 @@ en:
       invalid_email: 'is not a valid format'
       unauthorized: 'You are not authorized to perform this action'
       wrong_email_or_password: 'Wrong email or Password!'
+      project_was_successfully_created: 'Project was successfully created'
+  projects:
+    create:
+      success: 'Project was successfully created.'
+    update:
+      success: 'Project was successfully updated.'
+    destroy:
+      success: 'Project was successfully destroyed.'
+    unauthorized: 'You are not authorized to perform this action'
+  comments:
+    create:
+      success: 'Comment was successfully created.'
+    destroy:
+      success: 'Comment was successfully destroyed.'
+

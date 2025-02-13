@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = @project.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to "/projects/#{params[:project_id]}", notice: "Comment was successfully destroyed." }
+      format.html { redirect_to "/projects/#{params[:project_id]}", notice: I8n.t("comments.destroy.success") }
     end
   end
 
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     result = Comments::CreateService.call(params: comment_params.merge(project_id: params[:project_id]), user: @current_user)
     respond_to do |format|
       if result.success?
-        format.html { redirect_to "/projects/#{params[:project_id]}", notice: "Comment was successfully created." }
+        format.html { redirect_to "/projects/#{params[:project_id]}", notice: I18n.t("comments.create.success") }
       else
         format.html { render :new, status: :unprocessable_entity, alert: result.errors }
       end
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   private
 
   def set_project
-    @project = @current_user.projects.find(params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   def comment_params

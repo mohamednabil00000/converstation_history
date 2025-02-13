@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     result = Projects::CreateService.call(params: project_params, user: @current_user)
     respond_to do |format|
       if result.success?
-        format.html { redirect_to "/projects", notice: "Project was successfully created." }
+        format.html { redirect_to "/projects", notice: I18n.t("projects.create.success") }
       else
         format.html { render :new, status: :unprocessable_entity, alert: result.errors }
       end
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to "/projects", notice: "Project was successfully updated." }
+        format.html { redirect_to "/projects", notice: I18n.t("projects.update.success") }
       else
         format.html { render :edit, status: :unprocessable_entity, alert: @project.errors.full_messages.join(", ") }
       end
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to "/projects", notice: "Project was successfully destroyed." }
+      format.html { redirect_to "/projects", notice: I18n.t("projects.destroy.success") }
     end
   end
 
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
     unless @project.owner.id == @current_user.id
       respond_to do |format|
         format.html do
-          redirect_to "/projects", status: :unauthorized, alert: "You are not authorized to do that."
+          redirect_to "/projects", alert: I18n.t("projects.unauthorized")
         end
       end
       return false
