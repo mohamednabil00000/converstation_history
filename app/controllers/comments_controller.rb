@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    result = Comment::CreateService.call(params: comment_params, user: @current_user)
+    result = Comments::CreateService.call(params: comment_params, user: @current_user)
     respond_to do |format|
       if result.success?
         format.html { redirect_to "/projects/#{comment_params[:project_id]}", notice: "Comment was successfully created." }

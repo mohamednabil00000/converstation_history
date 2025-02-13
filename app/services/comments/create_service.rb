@@ -8,7 +8,7 @@ class Comments::CreateService
   end
 
   def call
-    comment = user.build_comment(params)
+    comment = user.comments.new(params)
     unless comment.save
       return Result.new(errors: comment.errors.full_messages.join(", "), success: false)
     end

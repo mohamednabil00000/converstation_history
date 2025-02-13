@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   root "sessions#new"
 
   resources :sessions, only: %i[create]
-  resources :projects
-  resources :comments
+  resources :projects do
+    resources :comments, only: %i[create destroy]
+  end
   resources :users
 end

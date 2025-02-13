@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[show edit update]
+  before_action :set_project, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[edit update destroy]
 
   def new
     @project = Project.new
   end
 
-  def show; end
+  def show
+    @comments = @project.comments.order_by_latest.includes(:author).paginate(page: page_no, per_page: per_page)
+  end
 
   def edit; end
 
@@ -37,7 +40,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = @current_user.projects.find(params[:id])
     @project.destroy
     respond_to do |format|
       format.html { redirect_to "/projects", notice: "Project was successfully destroyed." }
@@ -47,7 +49,21 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = @current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
+  end
+
+  def authorize_user!
+    unless @project.owner.id == @current_user.id
+      respond_to do |format|
+        format.html do
+          redirect_to project_url(@project), status: :unauthorized,
+                                             alert: "You are not authorized to do that."
+        end
+      end
+      return false
+    end
+
+    true
   end
 
   def project_params

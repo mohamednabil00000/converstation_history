@@ -1,6 +1,37 @@
 =< link_to "<- Back to projects", projects_path, class: "hover:underline hover:text-gray-600"
+ 
+div class="w-full flex" style="flex-direction: column"
+  div class="flex mt-8" style="flex-direction: row"
+    div class="font-bold" style="margin-right: 100px" Name
+    h1 class="text-xl font-bold" =< @project.name
 
-h1 class="text-xl font-bold mt-6" =< @project.name
-p class="mt-8" =< @project.owner.username
-p class="mt-8" =< @project.description
-p class="mt-8" =< @project.status
+  div class="flex flex-row mt-6" style="flex-direction: row"
+    div class="font-bold" style="margin-right: 50px" Owner
+    p =< @project.owner.username
+ 
+  div class="flex flex-row mt-6" style="flex-direction: row"
+    div class="font-bold" style="margin-right: 50px" Description
+    p =< @project.description
+ 
+  div class="flex flex-row mt-6"style="flex-direction: row"
+    div class="font-bold" style="margin-right: 90px" Status
+    p =< @project.status
+
+- if @project.comments.size > 0
+  div class="mt-8 text-xl font-bold" Comments
+ 
+  div class="w-full flex" style="flex-direction: column"
+    - @comments.each do |comment|
+      div class="w-full flex mt-6" style="flex-direction: column"
+        div class="flex mb-4" style="flex-direction: row"
+          div class="font-bold" style="margin-right: 50px" Author
+          p =< comment.author.username
+        div class="flex mb-4" style="flex-direction: row"
+          div class="font-bold" style="margin-right: 40px" Content
+          p =< comment.content
+        div class="flex mb-4" style="flex-direction: row"
+          div class="font-bold" style="margin-right: 40px" Created_at
+          p =< comment.created_at
+        hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"
+
+    = will_paginate @comments
