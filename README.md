@@ -3,8 +3,8 @@
 ## Description
 It is a project conversation history. A user should be able to:
 
-* leave a comment
-* change the status of the project
+* leave a comment.
+* change the status of the project.
 
 The project conversation history should list comments and changes in status.
 
